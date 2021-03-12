@@ -9,11 +9,6 @@ import (
 	"template/service"
 )
 
-type PostController interface {
-	GetPosts(resp http.ResponseWriter, req *http.Request)
-	AddPost(resp http.ResponseWriter, req *http.Request)
-}
-
 type controller struct{}
 
 var (

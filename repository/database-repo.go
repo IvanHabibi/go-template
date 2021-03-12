@@ -5,13 +5,13 @@ import (
 	"template/entity"
 )
 
-type repo struct{}
+type dbrepo struct{}
 
 func NewDatabaseRepository() PostRepository {
-	return &repo{}
+	return &dbrepo{}
 }
 
-func (*repo) FindAll() ([]entity.Post, error) {
+func (*dbrepo) FindAll() ([]entity.Post, error) {
 	db := datasource.OpenDB()
 
 	var posts []entity.Post
@@ -24,7 +24,7 @@ func (*repo) FindAll() ([]entity.Post, error) {
 
 }
 
-func (*repo) Save(post *entity.Post) (*entity.Post, error) {
+func (*dbrepo) Save(post *entity.Post) (*entity.Post, error) {
 	db := datasource.OpenDB()
 
 	db.Create(&post)

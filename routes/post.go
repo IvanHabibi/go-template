@@ -18,5 +18,5 @@ type PostRoutes struct{}
 
 func (c *PostRoutes) Routing(httpRouter router.Router) {
 	httpRouter.GET("/posts", postController.GetPosts)
-	httpRouter.POST("/posts", postController.AddPost)
+	httpRouter.POST("/post", postController.AddPost)
 }

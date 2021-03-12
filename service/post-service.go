@@ -15,11 +15,11 @@ type PostService interface {
 type service struct{}
 
 var (
-	repo repository.PostRepository
+	postRepo repository.PostRepository
 )
 
 func NewPostService(repository repository.PostRepository) PostService {
-	repo = repository
+	postRepo = repository
 	return &service{}
 }
 
@@ -44,7 +44,7 @@ func (*service) Validate(post *entity.Post) error {
 }
 func (*service) Create(post *entity.Post) (*entity.Post, error) {
 
-	postResult, err := repo.Save(post)
+	postResult, err := postRepo.Save(post)
 	if err != nil {
 		return nil, err
 	}
@@ -53,6 +53,6 @@ func (*service) Create(post *entity.Post) (*entity.Post, error) {
 }
 
 func (*service) FindAll() ([]entity.Post, error) {
-	posts, err := repo.FindAll()
+	posts, err := postRepo.FindAll()
 	return posts, err
 }

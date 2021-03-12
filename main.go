@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"template/auth"
 	router "template/http"
 	"template/routes"
 )
@@ -23,8 +24,14 @@ func main() {
 	migrateRoutes := routes.MigrateRoutes{}
 	migrateRoutes.Routing(httpRouter)
 
-	PostRoutes := routes.PostRoutes{}
-	PostRoutes.Routing(httpRouter)
+	postRoutes := routes.PostRoutes{}
+	postRoutes.Routing(httpRouter)
+
+	// authRoutes := routes.AuthRoutes{}
+	// authRoutes.Routing(httpRouter)
+
+	auth.Authorization() // yang coba2 login keycloak dan bedah tokenya di golang (g bakal kepake)
+	// auth.InstrospectToken()
 
 	// httpRouter.GET("/migrate", func(w http.ResponseWriter, r *http.Request) {
 	// 	migration.Migrate(w, r)
